@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Effects</title>
+    <link rel="stylesheet" href="p2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#menu-toggle").click(function () {
+                $("#side-nav").toggle();
+            });
+
+            $("#fade-button").click(function () {
+                $("#fade-img").fadeToggle();
+            });
+
+            $(".info-head").click(function () {
+                $("#info-body").slideToggle();
+            });
+
+            $(".show").click(function () {
+                $("content-box").toggle();
+            });
+
+            $(".content-box").hover(function () {
+                $(".content-box").animate({
+                    height: "100px",
+                    width: "200px",
+                    padding: "20px"
+                });
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <!-- <img id="menu-toggle" src="menu-icon.png" width="50px" height="50px" style="float:left"> -->
+        <b>Moon WOlf</b>
+    </header>
+    <hr>
+
+    <main class="row">
+        <img id="menu-toggle" src="menu-icon.png" width="50px" height="50px" style="float:left">
+        <ul id="side-nav" class="col-1">
+            <li class="active">Home</li>
+
+            <li>Our Puppies</li>
+            <li>Our Family</li>
+            <li>About MoonWolf</li>
+            <li class="show">Notifications *
+                <div class="content-box">You Have A Notification...
+                </div>
+            </li>
+            <hr>
+
+            <li>Oreo</li>
+            <li>Black knight</li>
+            <li>Siberian Husky</li>
+            <li>Malamute</li>
+        </ul>
+        <div class="fade-effect col-3">
+            <button id="fade-button">Fade</button>
+            <img src="p2.png" height="400px" id="fade-img">
+        </div>
+
+        <div class="info-head col-2">
+            <p>About Us</p>
+            <div class="info-body">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. <br>
+                Neque illo repellendus labore quibusdam numquam error nemo hic culpa atque mollitia at expedita
+                nulla<br>
+                recusandae aperiam reprehenderit sed corporis, maxime alias!<br>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque illo repellendus<br>
+                labore quibusdam numquam error nemo hic culpa atque mollitia at expedita nulla<br>
+                recusandae aperiam reprehenderit sed corporis, maxime alias!<br><br>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Husky &nbsp;Wolfdog &nbsp;117 Heaven Ave Riverdale, WI 52222&nbsp;
+        Tel:417-900-0000&nbsp;
+        MoonWOlf@aol.com
+    </footer>
+
+</body>
+
+</html>

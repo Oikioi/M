@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Validation</title>
+</head>
+<script src="user.js"></script>
+
+<body>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            background-color: rgba(79, 57, 57, 0.847);
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Ensure the form is centered within the viewport */
+            margin: 0;
+        }
+
+        /* Style for the registration form */
+        .registration {
+            width: 500px;
+            padding: 30px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .s {
+            background-color: blue;
+            /* Set the background color */
+            color: white;
+            /* Set the text color to white */
+            padding: 10px 20px;
+            /* border: none; */
+            cursor: pointer;
+        }
+    </style>
+    <form action="get" name="registration">
+        <table>
+            <tr>
+                <td><label for="firstname">UserName</label> </td>
+                <td><input type="text" name="firstname" id="firstname" placeholder="Username"></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email Address</label></td>
+                <td><input type="email" name="email" id="email" placeholder="XX@xxx.com"></td>
+            </tr>
+            <tr>
+                <td><label for="password">password</label></td>
+                <td><input type="password" name="password" id="password" placeholder="password"></td>
+            </tr>
+            <tr>
+                <td><label for="mobile">Mobile</label></td>
+                <td><input type="number" name="mobile" id="mobile" placeholder="Mobile Number"></td>
+            </tr>
+            <tr>
+                <td><button type='submit' id="s">Sign Up</button> </td>
+
+                <td><button id="login" style="display: none;">Login</button></td>
+            </tr>
+        </table>
+    </form>
+    <script src="jquery-min.js"></script>
+    <script src="jquery.validate.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#s').click(function check() {
+
+                let checkU = checkUser();
+                let checkP = checkpswd();
+
+                if (checkU && checkP === true) {
+                    alert("Successfully!");
+                    $("#login").show();
+
+                } else {
+                    return
+                }
+            });
+        });
+    </script>
+
+
+    <script>
+        $(function () {
+            $("form[name='registration']").validate({
+                rules: {
+                    firstname: "required",
+                    email: {
+                        required: true,
+                        email: true
+                    },
+
+                    password: {
+                        required: true,
+                        minlength: 5,
+                    },
+
+                    mobile: {
+                        required: true,
+                        minlength: 10,
+                        maxlength: 10
+                    }
+                },
+
+                messages: {
+                    firstname: "<span style='color:grey;'>Username should start with Capital letters</span>",
+
+                    password: {
+                        required: "<span style='color:grey;'>Enter Password</span>",
+                        minlength: "<span style='color:grey;'>rr</span>",
+                    },
+
+                    email: {
+                        required: "<span style='color:grey;'>Your Email Address</span>",
+                        email: "<span style='color:grey;'>rr</span>"
+                    },
+
+                    mobile: {
+                        required: "<span style='color:grey;'>Mobile Number</span>",
+                        minlength: "<span style='color:grey;'>Your Number must be at least 10 digits</span>",
+                        maxlength: "<span style='color:grey;'>Please Enter A valid Number</span>",
+                    }
+                },
+                submitHandler: function (form) {
+                    window.location.href = "success-page.html";
+                    // form.submit();
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
